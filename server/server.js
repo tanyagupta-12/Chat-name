@@ -31,7 +31,10 @@ io.on("connection",(socket) =>{
     io.emit("getOnlineUsers",Object.keys(userSocketMap))
   })
 })
-app.use("/api/status",(req,res) => res.send("Server is live"));
+app.get("/", (req, res) => {
+  res.send("Chat Backend is Running 🚀");
+});
+app.get("/api/status",(req,res) => res.send("Server is live"));
 app.use("/api/auth",userRouter)
 app.use("/api/messages",messageRouter)
 
